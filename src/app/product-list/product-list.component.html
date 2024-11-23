@@ -1,0 +1,43 @@
+<div class="product-container">
+
+  <!-- Sidebar de búsqueda a la izquierda -->
+  <div class="filter-section">
+    <h3>Buscar repuesto</h3>
+    <input type="text" placeholder="Buscar repuesto..." [(ngModel)]="searchTerm" (input)="searchSpareParts()" class="search-input" />
+
+    <h4>Filtrar por marca</h4>
+    <select [(ngModel)]="selectedBrand" (change)="filterByBrand()" class="filter-dropdown">
+      <option value="">Todas las marcas</option>
+      <option *ngFor="let brand of brands" [value]="brand.name">{{ brand.name }}</option>
+    </select>
+
+    <h4>Filtrar por modelo</h4>
+    <select [(ngModel)]="selectedModel" (change)="filterByModel()" class="filter-dropdown">
+      <option value="">Todos los modelos</option>
+      <option *ngFor="let model of models" [value]="model.id">{{ model.name }}</option>
+    </select>
+
+    <p class="results-count">Total de resultados: {{ filteredProducts.length }}</p>
+  </div>
+
+  <!-- Sección de resultados de productos a la derecha -->
+  <div class="products-section">
+    <div *ngIf="filteredProducts.length === 0" class="no-results">No se encontraron repuestos.</div>
+
+    <div class="product-card" *ngFor="let product of filteredProducts">
+      <img [src]="product.imageUrl" alt="{{ product.name }}" class="product-image" />
+      <div class="product-details">
+        <h2 class="product-name">{{ product.name }}</h2>
+        <p class="product-brand">Marca: {{ product.brand }}</p>
+        <p class="product-model">Modelo: {{ product.model }}</p>
+        <p class="product-price">Precio: {{ product.price | currency }}</p>
+
+        <!-- Enlace que redirige a la página de detalles del producto -->
+        <a [routerLink]="['/product-detail', product.id]" class="view-details-button">Ver detalles</a>
+        
+        <!-- Botón para agregar al carrito -->
+
+      </div>
+    </div>
+  </div>
+</div>

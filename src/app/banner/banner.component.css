@@ -1,0 +1,69 @@
+/* styles.css */
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-20px); /* Desplazamiento hacia arriba */
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .banner-content {
+    animation: fadeIn 1s ease-in-out; /* Duración y tipo de animación */
+  }
+
+  .banner {
+    background-image: url('/assets/imagen/logotipo.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 300px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Centra el texto horizontalmente */
+    color: white; /* Color blanco para el texto */
+    font-family: 'Arial', sans-serif; /* Fuente llamativa, puedes cambiarla */
+    position: relative; /* Para posicionar el texto dentro del banner */
+  }
+
+  .banner-text {
+    font-size: 2.5rem; /* Tamaño grande y llamativo para el texto */
+    font-weight: bold; /* Hace el texto más grueso */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Sombra para resaltar el texto */
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro semitransparente detrás del texto */
+    padding: 10px 20px; /* Espaciado interno para el texto */
+    border-radius: 10px; /* Bordes redondeados */
+  }
+  
+  .about-us {
+    padding: 50px 20px;
+    background: #f9f9f9;
+    text-align: center;
+  }
+  
+  .about-us-content {
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  .about-us h2 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-us p {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .about-us strong {
+    color: #ffcc00;
+    font-weight: bold;
+  }

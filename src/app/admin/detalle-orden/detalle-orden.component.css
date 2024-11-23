@@ -1,0 +1,116 @@
+/* Estilo principal */
+.order-detail-container {
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 800px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    font-family: 'Roboto', Arial, sans-serif;
+  }
+  
+  /* Título */
+  h2 {
+    text-align: center;
+    color: #333;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ddd;
+    padding-bottom: 10px;
+  }
+  
+  /* Tabla de detalles */
+  .order-detail-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+    font-size: 0.95em;
+  }
+  
+  .order-detail-table th {
+    background: linear-gradient(90deg, #007bff, #0056b3);
+    color: white;
+    font-weight: 600;
+    padding: 12px 15px;
+    text-align: left;
+    border: none;
+    border-radius: 6px 6px 0 0; /* Bordes redondeados en la parte superior */
+  }
+  
+  .order-detail-table th:first-child {
+    border-top-left-radius: 8px;
+  }
+  
+  .order-detail-table th:last-child {
+    border-top-right-radius: 8px;
+  }
+  
+  .order-detail-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+  }
+  
+  .order-detail-table tr:nth-child(even) {
+    background-color: #f7f7f7;
+  }
+  
+  /* Estilo de las filas al pasar el ratón */
+  .order-detail-table tbody tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.3s ease;
+  }
+  
+  .product-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .product-image {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 6px;
+  }
+  
+  .product-name {
+    font-weight: 500;
+    color: #555;
+  }
+  
+  /* Resumen del pedido */
+  .order-summary {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-summary h3 {
+    margin-bottom: 15px;
+    color: #007bff;
+    font-size: 1.4em;
+    text-align: center;
+  }
+  
+  .summary-item {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.1em;
+    margin: 8px 0;
+    color: #555;
+  }
+  
+  .summary-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.3em;
+    font-weight: 600;
+    color: #007bff;
+    border-top: 2px solid #ddd;
+    padding-top: 10px;
+    margin-top: 15px;
+  }
+  

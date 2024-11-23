@@ -1,0 +1,77 @@
+/* Estilo para los links */
+.navbar-nav .nav-link {
+  color: white; /* Texto blanco */
+  font-size: 18px; /* Tamaño de texto */
+  padding: 10px 15px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Transición suave */
+}
+
+/* Efecto hover para links */
+.navbar-nav .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Fondo transparente */
+  color: #ffdd57; /* Color del texto cambia al pasar el mouse */
+}
+
+/* Link activo */
+.navbar-nav .nav-link.active {
+  background-color: #ffdd57; /* Color para el link activo */
+  color: #333; /* Color de texto para el link activo */
+}
+
+/* Estilo para la marca */
+.navbar-brand {
+  font-size: 24px; /* Tamaño de la marca */
+  font-weight: bold; /* Negrita */
+  color: white; /* Color del texto */
+  transition: color 0.3s ease;
+}
+
+/* Hover sobre la marca del navbar */
+.navbar-brand:hover {
+  color: #ffdd57; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilo para el botón en móviles */
+.navbar-toggler {
+  border: none;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.navbar-toggler-icon {
+  background-image: url('data:image/svg+xml;charset=utf8,%3Csvg xmlns="http://www.w3.org/2000/svg" fill="%23fff" viewBox="0 0 30 30"%3E%3Cpath stroke="rgba%280, 0, 0, 0.5%29" stroke-width="2" stroke-linecap="round" stroke-miterlimit="10" d="M4 7h22M4 15h22M4 23h22"/%3E%3C/svg%3E');
+}
+
+/* Alineación de los elementos de la navbar a la derecha */
+.navbar-nav {
+  margin-left: auto; /* Empuja los elementos a la derecha */
+  display: flex;
+}
+
+/* Para pantallas pequeñas */
+@media (max-width: 768px) {
+  .navbar-nav {
+    display: block;
+    text-align: left;
+  }
+}
+
+.cart-icon {
+  position: relative; /* Para el posicionamiento del contador */
+}
+
+.cart-count {
+  position: absolute; /* Posicionamiento del contador */
+  top: -5px; /* Ajuste de posición vertical */
+  right: -10px; /* Ajuste de posición horizontal */
+  background-color: red; /* Fondo rojo */
+  color: white; /* Color del texto */
+  border-radius: 50%; /* Redondear el contador */
+  padding: 2px 6px; /* Espaciado interno */
+  font-size: 12px; /* Tamaño de fuente */
+}
+
+.cart-icon img {
+  width: 40px; /* Ajusta según sea necesario */
+  height: 40px; /* Ajusta según sea necesario */
+}

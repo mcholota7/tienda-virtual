@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 class="text-center">Mi Carrito de Compras</h2>
+  <div class="row">
+    <div class="col-md-8">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>Producto</th>
+            <th>Precio Unitario</th>
+            <th>Cantidad</th>
+            <th>Acción</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of cartItems">
+            <td><img [src]="item.product.imagen_url" alt="{{ item.product.nombre_repuesto }}" width="100"></td>
+            <td>{{ item.product.nombre_repuesto }}</td>
+            <td>{{ item.product.precio | currency }}</td>
+            <td>
+              <input
+                type="number"
+                min="1"
+                [value]="item.quantity"
+                (change)="onQuantityChange($event, item.product._id)"
+                class="form-control text-center"
+                style="width: 60px; display: inline-block;"
+              />
+            </td>
+            <td>
+              <button (click)="removeFromCart(item.product._id)" class="btn btn-danger">Eliminar</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-4">
+      <div class="summary">
+        <h3 class="center">Resumen</h3>
+        <p>Subtotal: {{ subtotal | currency }}</p> 
+        <p>IVA (13%): {{ iva | currency }}</p> 
+        <p>Total: {{ total | currency }}</p> 
+        <button class="checkout-button" (click)="onFinishPurchase()">Finalizar Compra</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,104 @@
+.orders-container {
+  margin: 20px auto;
+  max-width: 900px;
+  padding: 20px;
+  background: linear-gradient(145deg, #ffffff, #e6e6e6);
+  box-shadow: 4px 4px 8px #b3b3b3, -4px -4px 8px #ffffff;
+  border-radius: 10px;
+  font-family: 'Arial', sans-serif;
+  box-sizing: border-box;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 1.8rem;
+}
+
+/* Tabla principal */
+.orders-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+.orders-table th,
+.orders-table td {
+  text-align: left;
+  padding: 10px;
+}
+
+.orders-table th {
+  background: #007bff;
+  color: #fff;
+  font-weight: bold;
+}
+
+.orders-table tr:nth-child(even) {
+  background: #f2f2f2;
+}
+
+.orders-table tr:hover {
+  background: #e0e7ff;
+  cursor: pointer;
+}
+
+.orders-table td {
+  border-bottom: 1px solid #ccc;
+}
+
+/* Botón */
+.btn-details {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-details:hover {
+  background-color: #0056b3;
+}
+
+/* Responsividad para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .orders-container {
+      padding: 15px;
+  }
+
+  .title {
+      font-size: 1.5rem;
+  }
+
+  .orders-table th,
+  .orders-table td {
+      font-size: 0.9rem;
+      padding: 8px;
+  }
+
+  .btn-details {
+      padding: 5px 8px;
+      font-size: 0.9rem;
+  }
+}
+
+/* Responsividad para pantallas muy pequeñas (teléfonos) */
+@media screen and (max-width: 480px) {
+  .orders-table {
+      display: block;
+      overflow-x: auto;
+      white-space: nowrap;
+  }
+
+  .title {
+      font-size: 1.2rem;
+  }
+
+  .btn-details {
+      padding: 4px 6px;
+      font-size: 0.8rem;
+  }
+}

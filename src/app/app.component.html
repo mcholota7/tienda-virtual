@@ -1,0 +1,8 @@
+<div>
+    <app-navbar></app-navbar>
+    <app-banner *ngIf="router.url === '/'"></app-banner>
+    <div class="container">
+        <router-outlet></router-outlet> <!-- Aquí se cargarán las vistas en función de la ruta -->
+    </div>
+    <app-footer></app-footer>
+</div>

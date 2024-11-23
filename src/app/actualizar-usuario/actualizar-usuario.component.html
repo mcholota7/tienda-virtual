@@ -1,0 +1,71 @@
+<form [formGroup]="updateForm" (ngSubmit)="onSubmit()">
+    <div id="success-message" class="floating-message" *ngIf="showSuccessMessage">
+      Actualización exitosa
+    </div>
+  
+    <fieldset>
+      <legend>Información Personal</legend>
+      <div class="form-group">
+        <div>
+          <label for="firstName">Nombres</label>
+          <input id="firstName" formControlName="firstName" type="text">
+        </div>
+  
+        <div>
+          <label for="lastName">Apellidos</label>
+          <input id="lastName" formControlName="lastName" type="text">
+        </div>
+  
+        <div>
+          <label for="phone">Teléfono</label>
+          <input id="phone" formControlName="phone" type="text">
+        </div>
+      </div>
+    </fieldset>
+  
+    <fieldset>
+      <legend>Documento de Identificación</legend>
+      <div class="form-group">
+        <div>
+          <label for="documentType">Tipo de Documento</label>
+          <select id="documentType" formControlName="documentType">
+            <option value="cedula">Cédula</option>
+            <option value="ruc">RUC</option>
+            <option value="pasaporte">Pasaporte</option>
+          </select>
+        </div>
+        <div>
+          <label for="documentNumber">Número de Documento</label>
+          <input id="documentNumber" formControlName="documentNumber" type="text">
+        </div>
+      </div>
+    </fieldset>
+  
+    <fieldset>
+      <legend>Datos de Dirección</legend>
+      <div class="form-group">
+        <div>
+          <label for="province">Provincia</label>
+          <select id="province" formControlName="province">
+            <option value="" disabled selected>Seleccione una provincia</option>
+            <option *ngFor="let prov of provinceKeys" [value]="prov">{{ prov }}</option>
+          </select>
+        </div>
+        <div>
+          <label for="canton">Cantón</label>
+          <select id="canton" formControlName="canton">
+            <option value="" disabled selected>Seleccione un cantón</option>
+            <option *ngFor="let cant of cantons" [value]="cant">{{ cant }}</option>
+          </select>
+        </div>
+      
+        <div>
+          <label for="address">Dirección</label>
+          <input id="address" formControlName="address" type="text">
+        </div>
+      </div>
+    </fieldset>
+  
+    <button type="submit" [disabled]="updateForm.invalid">Actualizar</button>
+  </form>
+  

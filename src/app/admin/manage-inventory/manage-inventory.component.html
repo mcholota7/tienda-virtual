@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Inventario de Repuestos</h2>
+  
+  <!-- Barra de búsqueda (opcional) -->
+  <div class="search-bar">
+    <input type="text" [(ngModel)]="searchTerm" placeholder="Buscar repuesto..." (input)="search()">
+    <button (click)="search()">Buscar</button>
+  </div>
+
+  <!-- Tabla de inventario -->
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Repuesto</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Cantidad</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of inventario">
+        <td>{{ item.nombre_repuesto }}</td>
+        <td>{{ item.modelo.marca.nombre_marca }}</td>
+        <td>{{ item.modelo.nombre_modelo }}</td>
+        <td>{{ item.cantidad }}</td>
+        <td>\${{ item.precio }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

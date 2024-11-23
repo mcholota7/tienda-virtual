@@ -1,0 +1,54 @@
+<div class="product-detail-container">
+  <!-- Título del producto -->
+  <h1 class="product-title">Detalles del Repuesto</h1>
+
+  <!-- Botón de volver -->
+  <button class="go-back" (click)="goBack()">← Volver</button>
+
+  <div class="product-info">
+    <!-- Contenedor de la imagen -->
+    <div class="product-image-container">
+      <img #productImage class="product-image-large" [src]="product?.imagen_url" alt="{{ product?.nombre_repuesto }}">
+    </div>
+
+    <!-- Descripción del producto -->
+    <div class="product-description">
+      <!-- Nombre del producto -->
+      <h2 class="product-name">{{ product?.nombre_repuesto }}</h2>
+
+      <!-- Detalles del producto -->
+      <div class="product-details">
+        <!-- Precio -->
+        <p><strong>Precio:</strong> <span class="product-price">{{ product?.precio | currency }}</span></p>
+
+        <!-- Stock disponible -->
+        <p *ngIf="product && product.cantidad !== undefined && product.cantidad > 0">
+          <strong>Stock disponible:</strong> {{ product.cantidad }}
+        </p>
+
+        <!-- Producto agotado -->
+        <p *ngIf="product && product.cantidad === 0">
+          <span class="out-of-stock">Producto agotado</span>
+        </p>
+
+        <!-- Marca -->
+        <p *ngIf="product?.marca">
+          <strong>Marca:</strong> {{ product?.marca?.nombre_marca }}
+        </p>
+
+        <!-- Modelo -->
+        <p *ngIf="product?.modelo">
+          <strong>Modelo:</strong> {{ product?.modelo?.nombre_modelo }}
+        </p>
+      </div>
+
+      <!-- Botón para agregar al carrito -->
+      <button class="add-to-cart" (click)="addToCart()" [disabled]="product?.cantidad === 0">
+        <img src="assets/imagen/carrito.svg" alt="Carrito de compras"> Mover al carrito
+      </button>
+
+      <!-- Mensaje después de agregar al carrito -->
+      <div *ngIf="message" class="cart-message">{{ message }}</div>
+    </div>
+  </div>
+</div>

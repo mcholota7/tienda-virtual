@@ -1,0 +1,29 @@
+<!-- src/app/orders/orders.component.html -->
+<div class="orders-container">
+    <h1 class="title">Mis Órdenes</h1>
+    <table class="orders-table">
+      <thead>
+        <tr>
+          <th>ID Pedido</th>
+          <th>Fecha Pedido</th>
+          <th>Última Actualización</th>
+          <th>Estado</th>
+          <th>Observacion</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let order of orders">
+          <td>{{ order.id }}</td>
+          <td>{{ order.fecha }}</td>
+          <td>{{ order.fechaActualizacion }}</td>
+          <td>{{ order.estado }}</td>
+          <td>{{ order.observacion }}</td>
+          <td>
+            <button (click)="verDetalles(order.id)" class="btn-details">Ver Detalles</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  

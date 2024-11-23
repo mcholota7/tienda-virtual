@@ -1,0 +1,76 @@
+<div class="container">
+    <h2>Actualizar Producto</h2>
+  
+    <div class="form-layout">
+      <!-- Sección izquierda: Marca y Modelo -->
+      <div class="left-section">
+        <div class="form-group">
+          <label for="marca">Marca</label>
+          <select
+            id="marca"
+            class="form-control"
+            [(ngModel)]="selectedMarca" (change)="selectedMarca !== null && onMarcaChange(selectedMarca)">
+            <option [value]="null" disabled>Seleccione una marca</option>
+            <option *ngFor="let marca of marcas" [value]="marca._id">
+              {{ marca.nombre_marca }}
+            </option>
+          </select>
+        </div>
+  
+        <div class="form-group">
+          <label for="modelo">Modelo</label>
+          <select
+            id="modelo"
+            class="form-control"
+            [(ngModel)]="repuesto.idmodelo"
+          >
+            <option *ngFor="let modelo of modelos" [value]="modelo._id">
+              {{ modelo.nombre_modelo }}
+            </option>
+          </select>
+        </div>
+      </div>
+  
+      <!-- Sección derecha: Resto de los campos -->
+      <div class="right-section">
+        <div class="form-group">
+          <label for="nombre_repuesto">Nombre del Repuesto</label>
+          <input
+            id="nombre_repuesto"
+            class="form-control"
+            [(ngModel)]="repuesto.nombre_repuesto"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="precio">Precio</label>
+          <input
+            id="precio"
+            type="number"
+            class="form-control"
+            [(ngModel)]="repuesto.precio"
+          />
+        </div>
+  
+        <div class="form-group">
+          <label for="cantidad">Cantidad</label>
+          <input
+            id="cantidad"
+            type="number"
+            class="form-control"
+            [(ngModel)]="repuesto.cantidad"
+          />
+        </div>
+  
+        <div class="form-group">
+            <label for="imagen">Imagen</label>
+            <input id="imagen" type="file" class="form-control" (change)="onImageSelected($event)" />
+          </div>
+  
+        <button (click)="actualizarRepuesto()" class="btn btn-success mt-3">
+          Actualizar Producto
+        </button>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,86 @@
+<div class="container">
+  <h2>Reporte de Pedidos</h2>
+
+  <!-- Filtros de búsqueda -->
+  <div class="search-bar">
+    <div class="fecha-container">
+      <label for="fechaDesde">Fecha Desde:</label>
+      <input type="date" id="fechaDesde" [(ngModel)]="fechaDesde" />
+    </div>
+    <div class="fecha-container">
+      <label for="fechaHasta">Fecha Hasta:</label>
+      <input type="date" id="fechaHasta" [(ngModel)]="fechaHasta" />
+    </div>
+    <div>
+      <label for="estado">Estado:</label>
+      <select id="estado" [(ngModel)]="idestado" (change)="obtenerPedidos()">
+        <option *ngFor="let estado of estados" [value]="estado.id">
+          {{ estado.nombre }}
+        </option>
+      </select>
+    </div>
+    <button (click)="obtenerPedidos()">Buscar</button>
+  </div>
+
+  <!-- Tabla de pedidos -->
+  <table>
+    <thead>
+      <tr>
+        <th>ID Pedido</th>
+        <th>Cliente</th>
+        <th>Fecha Pedido</th>
+        <th>Estado Actual</th>
+        <th>Opciones de Estado</th>
+        <th>Observación</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pedido of pedidos">
+        <td>{{ pedido.idencabezado_pedido }}</td>
+        <td>{{ (pedido.usuario.persona.nombres || '') + ' ' + (pedido.usuario.persona.apellidos || '') }}</td>
+        <td>{{ pedido.fecha_pedido }}</td>
+        <td>{{ pedido.estado.nombre_estado }}</td>
+        <td>
+          <select
+          *ngIf="obtenerOpcionesEstado(pedido.estado.idestado).length > 0"
+          [(ngModel)]="pedido.selectedEstado"
+          (change)="onChangeEstado($event, pedido.idencabezado_pedido)"
+        >
+          <!-- Opción de "Seleccionar" que aparece por defecto -->
+          <option value="" disabled [selected]="pedido.selectedEstado === null">Seleccionar</option>
+          <!-- Opciones dinámicas que se llenan dependiendo del estado -->
+          <option
+            *ngFor="let opcion of obtenerOpcionesEstado(pedido.estado.idestado)"
+            [value]="opcion.id"
+          >
+            {{ opcion.nombre }}
+          </option>
+        </select>
+
+          <span *ngIf="obtenerOpcionesEstado(pedido.estado.idestado).length === 0">
+            Sin opciones
+          </span>
+        </td>
+        <td>
+          <!-- Observación editable -->
+          <input
+          type="text"
+          [(ngModel)]="pedido.observacion"
+          placeholder="Escribir observación"
+          [disabled]="!pedido.selectedEstado" 
+        />
+        </td>
+        <td>
+          <!-- Botones de acción -->
+          <button
+            [disabled]="!pedido.selectedEstado || !pedido.observacion.trim()" 
+            (click)="actualizarObservacion(pedido.idencabezado_pedido, pedido.observacion, pedido.selectedEstado || 0)">
+          Actualizar
+        </button>
+          <button (click)="verDetalles(pedido.idencabezado_pedido)">Ver Detalles</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

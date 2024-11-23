@@ -1,0 +1,51 @@
+<div class="container">
+  <h2>Crear Producto</h2>
+
+  <div class="form-layout">
+    <!-- Sección izquierda: Marca y Modelo -->
+    <div class="left-section">
+      <div class="form-group">
+        <label for="marca">Marca</label>
+        <select id="marca" class="form-control" [(ngModel)]="selectedMarca" (change)="onMarcaChange(selectedMarca)">
+          <option value="0">Seleccione una marca</option>
+          <option *ngFor="let marca of marcas" [value]="marca._id">{{ marca.nombre_marca }}</option>
+        </select>
+        <button (click)="createMarca()" class="btn btn-primary mt-2">Crear Marca</button>
+      </div>
+
+      <div class="form-group" *ngIf="selectedMarca">
+        <label for="modelo">Modelo</label>
+        <select id="modelo" class="form-control" [(ngModel)]="selectedModelo">
+          <option value="0">Seleccione un modelo</option>
+          <option *ngFor="let modelo of modelos" [value]="modelo._id">{{ modelo.nombre_modelo }}</option>
+        </select>
+        <button (click)="createModelo()" class="btn btn-primary mt-2">Crear Modelo</button>
+      </div>
+    </div>
+
+    <!-- Sección derecha: Resto de los campos -->
+    <div class="right-section">
+      <div class="form-group">
+        <label for="nombre_repuesto">Nombre del Repuesto</label>
+        <input id="nombre_repuesto" class="form-control" [(ngModel)]="product.nombre_repuesto" />
+      </div>
+
+      <div class="form-group">
+        <label for="precio">Precio</label>
+        <input id="precio" type="number" class="form-control" [(ngModel)]="product.precio" />
+      </div>
+
+      <div class="form-group">
+        <label for="cantidad">Cantidad</label>
+        <input id="cantidad" type="number" class="form-control" [(ngModel)]="product.cantidad" />
+      </div>
+
+      <div class="form-group">
+        <label for="imagen">Imagen</label>
+        <input id="imagen" type="file" class="form-control" (change)="onImageSelected($event)" />
+      </div>
+
+      <button (click)="onSubmit()" class="btn btn-success mt-3">Crear Producto</button>
+    </div>
+  </div>
+</div>

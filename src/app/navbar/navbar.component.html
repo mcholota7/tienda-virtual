@@ -1,0 +1,95 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="/">Tienda Virtual</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto" *ngIf="!isAdmin">
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Inicio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/productos" routerLinkActive="active">Catálogo de Productos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contacto</a>
+        </li>
+      </ul>
+
+        <!-- Opciones de Administrador -->
+        <ng-container *ngIf="isAdmin">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/inventory" routerLinkActive="active">Inventario</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/sales-report" routerLinkActive="active">Reporte de Ventas</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" routerLink="/admin/orders-client" routerLinkActive="active">Reporte de Pedidos</a>
+            </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="productsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Productos
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                  <li><a class="dropdown-item" routerLink="/admin/create-product">Agregar</a></li>
+                  <li><a class="dropdown-item" routerLink="/admin/select-product">Actualizar</a></li>
+                </ul>
+              </li>
+          </ul>
+        </ng-container>
+
+      <ul class="navbar-nav ms-auto">
+        <!-- Mostrar 'Ingresar' si no está autenticado -->
+        <ng-container *ngIf="!isAuthenticated; else adminMenu">
+          <li class="nav-item me-3">
+            <a class="nav-link" routerLink="/register">Crea tu cuenta</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/login">Ingresar</a>
+          </li>
+        </ng-container>
+        
+        <!-- Menú de administrador al estar logueado -->
+        <ng-template #adminMenu>
+          <li *ngIf="!isAdmin && isAuthenticated" class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="historialDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Historial de Pedidos
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="historialDropdown">
+              <li>
+                <a class="dropdown-item" routerLink="/ordenes">Estado de sus pedidos</a>
+              </li>
+              <li>
+                <a class="dropdown-item" routerLink="/ordenes2">Pedidos anteriores</a>
+              </li>
+            </ul>
+          </li>
+          
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="adminDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              {{userName}} <!-- Aquí mostrarás el nombre del administrador -->
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="adminDropdown">
+              <li><a class="dropdown-item"routerLink="/actualizar-usuario">Ver tu Perfil</a></li>
+              <li><a class="dropdown-item" routerLink="/actualizar-contrasena">Cambiar la Contraseña</a></li>
+              <li><a class="dropdown-item" (click)="logout()">Cerrar Sesión</a></li>
+            </ul>
+          </li>
+        </ng-template>
+
+        <!-- Ícono del carrito -->
+        <ng-container *ngIf="!isAdmin">
+          <div class="cart-icon">
+            <a routerLink="/cart">
+              <img src="assets/imagen/carrito.svg" alt="Carrito de compras">
+              <span class="cart-count">{{ cartCount }}</span>
+            </a>
+          </div>
+        </ng-container>
+      </ul>
+    </div>
+  </div>
+</nav>
